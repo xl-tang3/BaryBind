@@ -1,0 +1,31 @@
+{
+  "run_cfg": {
+    "default": "./config/barybind/default_run_cfg.json",
+    "mode": "testing",
+    "test_task": "ret%ta",
+    "test_batch_size": 16,
+    "test_n_workers": 4
+  },
+
+  "model_cfg": {
+    "default": "./config/barybind/default_model_cfg.json"
+  },
+
+  "data_cfg": {
+    "train": [],
+
+    "val": [
+      {
+        "type": "annoindexed",
+        "training": false,
+        "name": "audiocaps_ret",
+        "txt": "./datasets/srcdata/vgg/vggsound_subset5k.json",
+        "audio": "./datasets/srcdata/vgg/vggsound_cut_wav",
+        "audio_sample_num": 1,
+        "task": "ret%ta",
+        "batch_size": 4,
+        "n_workers": 4
+      }
+    ]
+  }
+}

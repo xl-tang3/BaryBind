@@ -1,0 +1,31 @@
+{
+  "run_cfg": {
+    "default": "./config/gram/default_run_cfg.json",
+    "mode": "testing",
+    "test_task": "ret%tv",
+    "test_batch_size": 1,
+    "test_n_workers": 4
+  },
+
+  "model_cfg": {
+    "default": "./config/gram/default_model_cfg.json"
+  },
+
+  "data_cfg": {
+    "train": [],
+    "val": [
+      {
+        "type": "annoindexed",
+        "training": false,
+        "name": "video_classification_ret",
+        "txt": "./datasets/srcdata/vgg/vggsound_subset5k.json",
+        "vision": "./datasets/srcdata/vgg/vggsound_cut_frames", 
+        "vision_format": "video_frame",
+        "vision_sample_num": 8,
+        "task": "ret%tv",
+        "batch_size": 4,
+        "n_workers": 4
+      }
+    ]
+  }
+}
