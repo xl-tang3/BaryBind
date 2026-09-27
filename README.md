@@ -45,7 +45,6 @@ BaryBind is a multimodal alignment framework that learns a **Multimodal Wasserst
 - **A learned shared anchor.** Optimize a Wasserstein barycenter across modality distributions to approximate their geometric semantic center.
 - **Higher-order alignment.** Construct a barycenter simplex from the WB embedding and modality-to-WB gaps, and contrast its volume across matched and mismatched samples.
 - **Scaling Beyond three modalities.** Extend alignment to text, video, audio, subtitles, and depth.
-- **Understanding and generation.** Evaluate cross-modal retrieval, multimodal classification, VideoQA, and text/audio-conditioned image generation, including missing-modality settings.
 
 ## Method
 
