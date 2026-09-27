@@ -91,8 +91,8 @@ where $\mathbf G=[\boldsymbol b,\boldsymbol r_1,\ldots,\boldsymbol r_K\,]$
 The **Barycenter-Anchored Volumetric Contrastive (BVC)** loss contrasts matched WB–gap pairs against mismatched ones. **Data-Anchor Matching (DAM)** further supervises whether the anchor and multimodal features match. The combined objective is
 
 $$
-\mathcal{L}=\mathcal{L}{\mathrm{MWB}}
-+\alpha_1\mathcal{L}{\mathrm{BVC}}
+\mathcal{L}=\mathcal{L}_{\mathrm{MWB}}
++\alpha_1\mathcal{L}_{\mathrm{BVC}}
 +\alpha_2\mathcal{L}_{\mathrm{DAM}}.
 $$
 
