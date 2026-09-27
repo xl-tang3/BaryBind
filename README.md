@@ -12,6 +12,7 @@ Xi'an Jiaotong University
 
 <a href="assets/paper.pdf"><img src="https://img.shields.io/badge/Paper-PDF-B54848?style=flat-square" alt="Paper PDF"></a>
 <a href="https://github.com/xl-tang3/barybind"><img src="https://img.shields.io/badge/Code-GitHub-24292F?style=flat-square&logo=github" alt="Code"></a>
+<a href="https://xl-tang3.github.io/BaryBind/"><img src="https://img.shields.io/badge/Project-Page-2F6F69?style=flat-square" alt="Project Page"></a>
 <a href="#citation"><img src="https://img.shields.io/badge/Cite-BibTeX-637A72?style=flat-square" alt="BibTeX"></a>
 
 **Learn the Wasserstein barycenter of multimodal distributions and bind modalities around it.**
