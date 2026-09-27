@@ -1,0 +1,1 @@
+{"name":"barybind-project-page","version":"1.0.0","private":true,"description":"Static BaryBind research project page. No build required.","scripts":{"dev":"node preview.cjs","start":"node preview.cjs"}}

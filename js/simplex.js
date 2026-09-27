@@ -1,0 +1,19 @@
+(() => {
+'use strict';
+const {add,colors,warm}=window.BaryGraphics;
+const svg=document.getElementById('simplex-plot'),O=[95,347],B=[335,133],M=[[170,220],[493,279],[325,351]];
+const defs=add(svg,'defs');const marker=add(defs,'marker',{id:'gap-arrow',viewBox:'0 0 10 10',refX:9,refY:5,markerWidth:7,markerHeight:7,orient:'auto-start-reverse'});add(marker,'path',{d:'M0 0 10 5 0 10Z',fill:warm});
+add(svg,'path',{d:'M60 360 550 360M95 380 95 68M95 347 465 90',fill:'none',stroke:'#39454b','stroke-width':'.8','stroke-dasharray':'3 7'});
+const faces=add(svg,'g');M.forEach((p,k)=>add(faces,'path',{d:`M${B}L${p}L${M[(k+1)%3]}Z`,fill:colors[k],'fill-opacity':'.08',stroke:colors[k],'stroke-opacity':'.25','stroke-width':1}));
+add(svg,'line',{x1:O[0],y1:O[1],x2:B[0],y2:B[1],stroke:warm,'stroke-width':1.5,'marker-end':'url(#gap-arrow)'});add(svg,'text',{x:195,y:225,fill:warm,class:'plot-label'},'b');
+add(svg,'circle',{cx:O[0],cy:O[1],r:3,fill:'#7f8d91'});add(svg,'text',{x:72,y:369,fill:'#9ca9ae',class:'plot-small'},'ORIGIN');
+add(svg,'circle',{cx:B[0],cy:B[1],r:26,fill:warm,'fill-opacity':'.055',stroke:warm,'stroke-opacity':'.3'});add(svg,'circle',{cx:B[0],cy:B[1],r:5,fill:warm});add(svg,'text',{x:B[0],y:B[1]-43,fill:warm,class:'plot-label','text-anchor':'middle'},'WB · b');
+const lines=[],texts=[];M.forEach((p,k)=>{lines.push(add(svg,'line',{x1:p[0],y1:p[1],x2:B[0],y2:B[1],stroke:colors[k],'stroke-width':1.5,'marker-end':'url(#gap-arrow)',class:'simplex-line'}));texts.push(add(svg,'text',{x:(p[0]+B[0])/2+12,y:(p[1]+B[1])/2+15,fill:colors[k],class:'plot-label'},'r'+'₁₂₃'[k]));add(svg,'circle',{cx:p[0],cy:p[1],r:5,fill:colors[k]});add(svg,'text',{x:p[0]+(k===0?-12:k===1?12:0),y:p[1]+(k===2?28:2),'text-anchor':k===0?'end':k===1?'start':'middle',fill:colors[k],class:'plot-label'},['TEXT','VIDEO','AUDIO'][k]);});
+function highlight(k){lines.forEach((n,i)=>{n.setAttribute('opacity',i===k?1:.22);n.setAttribute('stroke-width',i===k?2.8:1);texts[i].setAttribute('opacity',i===k?1:.35);});document.getElementById('gap-caption').textContent=`r${'₁₂₃'[k]} points from the ${['text','video','audio'][k]} embedding to the WB.`;document.querySelectorAll('[data-gap]').forEach((n,i)=>n.setAttribute('aria-pressed',String(i===k)));}
+document.querySelectorAll('[data-gap]').forEach(b=>{b.addEventListener('click',()=>highlight(+b.dataset.gap));b.addEventListener('mouseenter',()=>highlight(+b.dataset.gap));b.addEventListener('focus',()=>highlight(+b.dataset.gap));});highlight(0);
+const volume=document.getElementById('volume-plot');add(volume,'ellipse',{cx:320,cy:248,rx:202,ry:62,fill:'none',stroke:'#354249','stroke-dasharray':'3 7'});add(volume,'line',{x1:115,y1:300,x2:320,y2:110,stroke:warm,'stroke-opacity':'.6','stroke-width':1});add(volume,'text',{x:101,y:323,fill:'#9ca9ae',class:'plot-small'},'O');
+const polys=[],dots=[],links=[];for(let i=0;i<3;i++){polys.push(add(volume,'path',{fill:colors[i],'fill-opacity':'.14',stroke:colors[i],'stroke-opacity':'.5',class:'simplex-line'}));links.push(add(volume,'line',{x1:320,y1:110,stroke:colors[i],'stroke-width':1.5,class:'simplex-line'}));dots.push(add(volume,'circle',{r:5,fill:colors[i],class:'simplex-point'}));}
+add(volume,'circle',{cx:320,cy:110,r:5,fill:warm});add(volume,'text',{x:320,y:75,fill:warm,'text-anchor':'middle',class:'plot-label'},'WB ANCHOR');
+function volumeState(negative){const pts=negative?[[131,225],[517,215],[360,309]]:[[279,162],[365,174],[324,204]];polys.forEach((p,i)=>p.setAttribute('d',`M320,110L${pts[i]}L${pts[(i+1)%3]}Z`));dots.forEach((d,i)=>{d.setAttribute('cx',pts[i][0]);d.setAttribute('cy',pts[i][1]);links[i].setAttribute('x2',pts[i][0]);links[i].setAttribute('y2',pts[i][1]);});}
+document.querySelectorAll('[data-sample]').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('[data-sample]').forEach(n=>n.setAttribute('aria-pressed',String(n===b)));volumeState(b.dataset.sample==='negative');}));volumeState(false);
+})();
