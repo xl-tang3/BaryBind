@@ -200,6 +200,19 @@ Expected checkpoint locations:
 | BEATs | `pretrained_weights/beats/BEATs_iter3_plus_AS2M.pt` |
 | BERT | `pretrained_weights/bert/bert-base-uncased/` |
 
+The processed  pretrained_weights path should be as follows:
+```
+    ├── pretrained_weights
+    │   ├── beats
+    │   │   └── BEATs_iter3_plus_AS2M.pt
+    │   ├── bert
+    │   │   └── bert-base-uncased
+    │   ├── clip
+    │   │   └── EVA01_CLIP_g_14_psz14_s11B.pt
+```
+
+Also, download the vast weights as a start checkpoint in [VAST](https://github.com/TXH-mercury/VAST)
+
 ## Model Zoo
 
 | Model directory | Modalities | Checkpoint |
