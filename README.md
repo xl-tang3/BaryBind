@@ -217,7 +217,7 @@ Also, download the vast weights as a start checkpoint in [VAST](https://github.c
 
 | Model directory | Modalities | Checkpoint |
 | :--- | :--- | :--- |
-| `barybind_pretrained_4modalities` | Text, video, audio, subtitle | Download link pending |
+| `barybind_pretrained_4modalities` | Text, video, audio, subtitle | [Download link](https://drive.google.com/drive/folders/1poY_-gGBng8XDNsUGXqntQbWaRC-PpWU?usp=sharing) |
 
 <!-- Maintainer: replace the pending entry with the actual checkpoint-folder URL. -->
 
